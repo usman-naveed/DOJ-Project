@@ -1,13 +1,32 @@
-# TODO: remove punctuation and special characters
 from src.readData import ReadData
 from src.preprocessData import PreProcess
 import nltk
 import pandas as pd
+
 nltk.download('punkt')
+
+
+def main():
+    x = 7
 
 
 def test():
     x = 5
+
+
+def frequencyChartForTopics():
+    pd.set_option('display.width', 800)
+    df = ReadData('/Users/musmannaveed/PycharmProjects/dojProject/data/combined.json').read_json()
+    gh = df['title']
+    df = df['topics']
+    print(gh)
+    print(df)
+    for topic in df:
+        if not topic:
+            pass
+        else:
+            token = PreProcess(topic).tokenize()
+    print(token)
 
 
 def frequencyChartForTitles():
@@ -26,4 +45,4 @@ def frequencyChartForTitles():
 
 
 if __name__ == '__main__':
-    frequencyChartForTitles()
+    frequencyChartForTopics()
