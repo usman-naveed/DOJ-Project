@@ -15,6 +15,8 @@ def test():
 
 
 def frequencyChartForTopics():
+    # TODO: Topics are already in a list format, need to unlist then call tokenize method to avoid a nested list 3 levels deep.
+
     pd.set_option('display.width', 800)
     df = ReadData('/Users/musmannaveed/PycharmProjects/dojProject/data/combined.json').read_json()
     gh = df['title']
