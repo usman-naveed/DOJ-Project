@@ -1,6 +1,7 @@
 from src.readData import ReadData
 from src.preprocessData import PreProcess
 import nltk
+from itertools import chain
 import pandas as pd
 
 nltk.download('punkt')
@@ -15,20 +16,11 @@ def test():
 
 
 def frequencyChartForTopics():
-    # TODO: Topics are already in a list format, need to unlist then call tokenize method to avoid a nested list 3 levels deep.
-
     pd.set_option('display.width', 800)
     df = ReadData('/Users/musmannaveed/PycharmProjects/dojProject/data/combined.json').read_json()
-    gh = df['title']
-    df = df['topics']
-    print(gh)
-    print(df)
-    for topic in df:
-        if not topic:
-            pass
-        else:
-            token = PreProcess(topic).tokenize()
-    print(token)
+    df = list(chain.from_iterable(df['topics']))
+    fDist = nltk.probability.FreqDist(df)
+    fDist.plot(title='Frequency Count of Topics')
 
 
 def frequencyChartForTitles():
@@ -41,9 +33,9 @@ def frequencyChartForTitles():
     fDist = nltk.probability.FreqDist(tokenizedTitlesStopWordRemoved)
     FDist = nltk.probability.FreqDist(bigramsStopWordsRemoved)
     FDIST = nltk.probability.FreqDist(trigramsStopWordsRemoved)
-    fDist.plot(20)
-    FDist.plot(30)
-    FDIST.plot(50)
+    fDist.plot(20, title='Frequency Chart of Words appearing in the Title')
+    FDist.plot(30, title='Frequency Chart of Bigrams appearing in the Title')
+    FDIST.plot(50, title='Frequency Chart of Trigrams appearing in the Title')
 
 
 if __name__ == '__main__':
