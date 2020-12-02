@@ -8,11 +8,11 @@ nltk.download('punkt')
 
 
 def main():
-    x = 7
+    print('main')
 
 
-def test():
-    x = 5
+def test()
+    #x = 5
 
 
 def frequencyChartForTopics():
