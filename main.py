@@ -1,4 +1,3 @@
 from src import Descriptive_Analysis
 
-if __name__ == '__main__':
-    Descriptive_Analysis.wordCloudForContent()
+Descriptive_Analysis.word_cloud_for_content()

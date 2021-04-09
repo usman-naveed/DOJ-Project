@@ -14,7 +14,7 @@ class PreProcess:
             tokens.append(token)
         return tokens
 
-    def regExpTokenize(self):
+    def reg_exp_tokenize(self):
         """
         regExpTokenize removes punctuations, only keeps alpha-numeric tokens.
         """
@@ -27,24 +27,24 @@ class PreProcess:
         return tokens
 
     @staticmethod
-    def removeStopWords(tokenized, returnType: str = 'list'):
+    def remove_stop_words(tokenized, return_type: str = 'list'):
         # TODO: Add exceptions for argument type
         """
         The method removeStopWords takes an argument 'tokenized' which is assumed to be of the format [[],[],...,[]]
         """
-        stopWords = set(nltk.corpus.stopwords.words('english'))
-        filteredSentence = []
-        if returnType == 'list':
+        stop_words = set(nltk.corpus.stopwords.words('english'))
+        filtered_sentence = []
+        if return_type == 'list':
             for sentence in tokenized:
-                placeHolder = []
+                place_holder = []
                 for word in sentence:
-                    if word not in stopWords:
-                        placeHolder.append(word)
-                filteredSentence.append(placeHolder)
-            return filteredSentence
-        elif returnType == 'tokens':
+                    if word not in stop_words:
+                        place_holder.append(word)
+                filtered_sentence.append(place_holder)
+            return filtered_sentence
+        elif return_type == 'tokens':
             for sentence in tokenized:
                 for word in sentence:
-                    if word not in stopWords:
-                        filteredSentence.append(word)
-            return filteredSentence
+                    if word not in stop_words:
+                        filtered_sentence.append(word)
+            return filtered_sentence
